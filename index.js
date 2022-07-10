@@ -100,22 +100,44 @@
 //   console.log(x - y);
 // });
 
+// Removing Url & Adding 404 page. Also sending file to server
+// const express = require("express");
+// const path = require("path");
+// const dataPath = path.join(__dirname, "public");
+// const app = express();
+
+// // app.use(express.static(dataPath));
+// app.get("/", (req, res) => {
+//   res.sendFile(`${dataPath}/index.html`);
+// });
+
+// app.get("/about", (req, res) => {
+//   res.sendFile(`${dataPath}/about.html`);
+// });
+
+// app.get("*", (req, res) => {
+//   res.sendFile(`${dataPath}/pageNotFound.html`);
+// });
+
+// app.listen(5000);
+
 const express = require("express");
-const path = require("path");
-const dataPath = path.join(__dirname, "public");
 const app = express();
 
-// app.use(express.static(dataPath));
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
-  res.sendFile(`${dataPath}/index.html`);
+  res.render("index");
 });
 
-app.get("/about", (req, res) => {
-  res.sendFile(`${dataPath}/about.html`);
+app.get("/profile", (req, res) => {
+  const user = {
+    name: "harsh",
+    email: "harsh90@gmail.com",
+    skills: ["react", "typescript", "node", "css"],
+  };
+
+  res.render("profile", { user });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(`${dataPath}/pageNotFound.html`);
-});
-
-app.listen(5000);
+app.listen(8000);
