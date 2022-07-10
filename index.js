@@ -105,6 +105,17 @@ const path = require("path");
 const dataPath = path.join(__dirname, "public");
 const app = express();
 
-app.use(express.static(dataPath));
+// app.use(express.static(dataPath));
+app.get("/", (req, res) => {
+  res.sendFile(`${dataPath}/index.html`);
+});
+
+app.get("/about", (req, res) => {
+  res.sendFile(`${dataPath}/about.html`);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(`${dataPath}/pageNotFound.html`);
+});
 
 app.listen(5000);
