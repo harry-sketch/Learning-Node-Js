@@ -37,14 +37,50 @@
 // return console.log("unhandled operation");
 
 //Reading File Directory
+// const fs = require("fs");
+// const path = require("path");
+// const dirName = path.join(__dirname, "files");
+
+// for (i = 0; i <= 5; i++) {
+//   fs.writeFileSync(`${dirName}/test${i}.txt`, "test call");
+// }
+
+// fs.readdir(dirName, (err, files) => {
+//   files.forEach((file) => console.log(file));
+// });
+
+// CRUD Operation in File System
+
 const fs = require("fs");
 const path = require("path");
-const dirName = path.join(__dirname, "files");
+const dirPath = path.join(__dirname, "Crud");
+const fileDir = `${dirPath}/test.txt`;
 
-for (i = 0; i <= 5; i++) {
-  fs.writeFileSync(`${dirName}/test${i}.txt`, "test call");
-}
+// Step 1: Creating a file with writeFileSync method of file system
+fs.writeFileSync(fileDir, "this is a test call");
 
-fs.readdir(dirName, (err, files) => {
-  files.forEach((file) => console.log(file));
+// Step 2: Reading a file with readFile method of file system
+fs.readFile(fileDir, "utf8", (err, data) => {
+  if (!err) return console.log(data);
 });
+
+// Step 3: appending some text in file with append method of file system
+fs.appendFile(fileDir, " append data", (err) => {
+  if (!err) return console.log("data appended");
+});
+
+// Step 4: updating file name  with rename method of file system
+fs.rename(fileDir, `${dirPath}/hello.txt`, (err) => {
+  if (!err) console.log("file updated successfully!!");
+});
+
+// Step 5: deleting file  with unlinkSync method of file system
+fs.unlinkSync(`${dirPath}/hello.txt`);
+fs.writeFileSync(`${dirPath}/test.txt`, "test call");
+fs.appendFile(`${dirPath}/test.txt`, " & data added", (err) => {
+  if (!err) return console.log("data added");
+});
+
+// .appendFile & rename methods take a call back with takes error
+// readFile & readDir take a call back with err & data apart from them readFile take a utf8 from saving buffer
+// Buffer is what nodejs takes some memory for the operation perfomance.
