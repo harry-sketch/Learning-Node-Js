@@ -51,36 +51,51 @@
 
 // CRUD Operation in File System
 
-const fs = require("fs");
-const path = require("path");
-const dirPath = path.join(__dirname, "Crud");
-const fileDir = `${dirPath}/test.txt`;
+// const fs = require("fs");
+// const path = require("path");
+// const dirPath = path.join(__dirname, "Crud");
+// const fileDir = `${dirPath}/test.txt`;
 
-// Step 1: Creating a file with writeFileSync method of file system
-fs.writeFileSync(fileDir, "this is a test call");
+// // Step 1: Creating a file with writeFileSync method of file system
+// fs.writeFileSync(fileDir, "this is a test call");
 
-// Step 2: Reading a file with readFile method of file system
-fs.readFile(fileDir, "utf8", (err, data) => {
-  if (!err) return console.log(data);
-});
+// // Step 2: Reading a file with readFile method of file system
+// fs.readFile(fileDir, "utf8", (err, data) => {
+//   if (!err) return console.log(data);
+// });
 
-// Step 3: appending some text in file with append method of file system
-fs.appendFile(fileDir, " append data", (err) => {
-  if (!err) return console.log("data appended");
-});
+// // Step 3: appending some text in file with append method of file system
+// fs.appendFile(fileDir, " append data", (err) => {
+//   if (!err) return console.log("data appended");
+// });
 
-// Step 4: updating file name  with rename method of file system
-fs.rename(fileDir, `${dirPath}/hello.txt`, (err) => {
-  if (!err) console.log("file updated successfully!!");
-});
+// // Step 4: updating file name  with rename method of file system
+// fs.rename(fileDir, `${dirPath}/hello.txt`, (err) => {
+//   if (!err) console.log("file updated successfully!!");
+// });
 
-// Step 5: deleting file  with unlinkSync method of file system
-fs.unlinkSync(`${dirPath}/hello.txt`);
-fs.writeFileSync(`${dirPath}/test.txt`, "test call");
-fs.appendFile(`${dirPath}/test.txt`, " & data added", (err) => {
-  if (!err) return console.log("data added");
-});
+// // Step 5: deleting file  with unlinkSync method of file system
+// fs.unlinkSync(`${dirPath}/hello.txt`);
+// fs.writeFileSync(`${dirPath}/test.txt`, "test call");
+// fs.appendFile(`${dirPath}/test.txt`, " & data added", (err) => {
+//   if (!err) return console.log("data added");
+// });
 
 // .appendFile & rename methods take a call back with takes error
 // readFile & readDir take a call back with err & data apart from them readFile take a utf8 from saving buffer
 // Buffer is what nodejs takes some memory for the operation perfomance.
+
+// // Promises
+
+// let x = 100;
+// let y = 0;
+
+// let rightSolution = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(50);
+//   }, 3000);
+// });
+
+// rightSolution.then((y) => {
+//   console.log(x - y);
+// });
