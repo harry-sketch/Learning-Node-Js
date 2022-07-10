@@ -87,15 +87,24 @@
 
 // // Promises
 
-let x = 100;
-let y = 0;
+// let x = 100;
+// let y = 0;
 
-let rightSolution = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(50);
-  }, 3000);
-});
+// let rightSolution = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(50);
+//   }, 3000);
+// });
 
-rightSolution.then((y) => {
-  console.log(x - y);
-});
+// rightSolution.then((y) => {
+//   console.log(x - y);
+// });
+
+const express = require("express");
+const path = require("path");
+const dataPath = path.join(__dirname, "public");
+const app = express();
+
+app.use(express.static(dataPath));
+
+app.listen(5000);
