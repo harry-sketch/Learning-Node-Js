@@ -1,0 +1,22 @@
+{
+  "name": "learningnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harry-sketch/Learning-Node-Js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harry-sketch/Learning-Node-Js/issues"
+  },
+  "homepage": "https://github.com/harry-sketch/Learning-Node-Js#readme",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
