@@ -121,23 +121,48 @@
 
 // app.listen(5000);
 
+// Dynamic Page with Ejs Template Engine
+
+// const express = require("express");
+// const app = express();
+
+// app.set("view engine", "ejs");
+
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
+
+// app.get("/profile", (req, res) => {
+//   const user = {
+//     name: "harsh",
+//     email: "harsh90@gmail.com",
+//     skills: ["react", "typescript", "node", "css"],
+//   };
+
+//   res.render("profile", { user });
+// });
+
+// app.listen(8000);
+
+// Mddleware
+
 const express = require("express");
 const app = express();
+const filterRouting = require("./middleware/middleware");
 
-app.set("view engine", "ejs");
+const route = express.Router();
+// app.use(filterRouting)
+
+route.use(filterRouting);
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.send("Welcome to Home Page");
 });
 
-app.get("/profile", (req, res) => {
-  const user = {
-    name: "harsh",
-    email: "harsh90@gmail.com",
-    skills: ["react", "typescript", "node", "css"],
-  };
-
-  res.render("profile", { user });
+route.get("/user", (req, res) => {
+  res.send("Welcome to User Page");
 });
 
-app.listen(8000);
+app.use("/", route);
+
+app.listen(7000);
