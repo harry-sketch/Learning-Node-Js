@@ -146,23 +146,40 @@
 
 // Mddleware
 
-const express = require("express");
-const app = express();
-const filterRouting = require("./middleware/middleware");
+// const express = require("express");
+// const app = express();
+// const filterRouting = require("./middleware/middleware");
 
-const route = express.Router();
-// app.use(filterRouting)
+// const route = express.Router();
+// // app.use(filterRouting)
 
-route.use(filterRouting);
+// route.use(filterRouting);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Home Page");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to Home Page");
+// });
 
-route.get("/user", (req, res) => {
-  res.send("Welcome to User Page");
-});
+// route.get("/user", (req, res) => {
+//   res.send("Welcome to User Page");
+// });
 
-app.use("/", route);
+// app.use("/", route);
 
-app.listen(7000);
+// app.listen(7000);
+
+// Connect MongoDb with Node
+
+const { MongoClient } = require("mongodb");
+const url = "mongodb://localhost:27017";
+
+const client = new MongoClient(url); //inform node to connect with mongodb
+
+const getData = async () => {
+  let dbConnect = await client.connect(); //node connect with mongodb
+  let getDb = dbConnect.db("StudentData"); //connect db
+  let collections = getDb.collection("data"); //get collections
+  let res = await collections.find().toArray(); //get results
+  console.log(res);
+};
+
+getData();
